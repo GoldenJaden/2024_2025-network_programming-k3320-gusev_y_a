@@ -21,6 +21,23 @@ Date of finished: 28.04.2025
 
 ![image](https://github.com/user-attachments/assets/87c51645-693c-4936-959e-a42ec1acf613)
 
+В Access логе OpenVPN сервера видим оба клиента:
+
+```
+(venv) root@shannon:~/ansible# cat /var/log/openvpn-status-27500.log 
+OpenVPN CLIENT LIST
+Updated,2025-04-27 21:16:01
+Common Name,Real Address,Bytes Received,Bytes Sent,Connected Since
+mikrotik27500,31.207.65.111:33298,1059693,323609,2025-04-27 14:01:17
+mikrotik2,31.207.65.111:50060,1057564,323741,2025-04-27 14:01:17
+ROUTING TABLE
+Virtual Address,Common Name,Real Address,Last Ref
+10.244.103.3,mikrotik2,31.207.65.111:50060,2025-04-27 21:15:51
+10.244.103.2,mikrotik27500,31.207.65.111:33298,2025-04-27 21:15:51
+GLOBAL STATS
+Max bcast/mcast queue length,5
+END
+```
 
 # Настройка окружения
 
