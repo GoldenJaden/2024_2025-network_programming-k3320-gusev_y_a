@@ -1,4 +1,4 @@
-University: [ITMO University](https://itmo.ru/ru/)
+![image](https://github.com/user-attachments/assets/d5598d00-0f61-4042-b07c-7498c1ce3a85)University: [ITMO University](https://itmo.ru/ru/)
 
 Faculty: [PIN](https://fict.itmo.ru)
 
@@ -10,92 +10,53 @@ Group: K3320
 
 Author: Gusev Yaroslav Aleksandrovich
 
-Lab: [Lab1](https://itmo-ict-faculty.github.io/network-programming/education/labs2023_2024/lab1/lab1/)
+Lab: [Lab2](https://itmo-ict-faculty.github.io/network-programming/education/labs2023_2024/lab2/lab2/)
 
-Date of create: 26.03.2025
+Date of create: 27.04.2025
 
-Date of finished: 27.03.2025
+Date of finished: 28.04.2025
 
 
-# Настройка сервера open vpn
+# Создание второй виртуальной машины с CHR
 
-Настройка сервера была произведена при помощи [скрипта](https://github.com/unixhostpro/mikrotik-ovpn/blob/master/openvpn-server.sh). Был поднят open vpn со следующей конфигурацией:
+Была склонирована виртуальная машина с CHR, под новый роутер был создан и настроен клиент OpenVPN.
+
+![image](https://github.com/user-attachments/assets/87c51645-693c-4936-959e-a42ec1acf613)
+
+
+# Настройка окружения
+
+Ansible был установлен в виртуальное окружение. Были поставлены нужные для работы пакеты:
+
 ```
-daemon
-mode server
-tls-server
-port 20805
-proto tcp
-dev tun20805
-log /var/log/openvpn-20805.log
-status /var/log/openvpn-status-20805.log
-ca /etc/openvpn/mikrotik-ssl/ca-20805.crt
-cert /etc/openvpn/mikrotik-ssl/server-20805.crt
-key /etc/openvpn/mikrotik-ssl/server-20805.key
-dh /etc/openvpn/mikrotik-ssl/dh2048-20805.pem
-topology subnet
-server 10.11.197.0 255.255.255.0
-client-to-client
-ifconfig-pool-persist ipp.txt
-username-as-common-name
-push "dhcp-option DNS 1.1.1.1"
-push "dhcp-option DNS 8.8.8.8"
-user nobody
-group nogroup
-keepalive 10 120
-persist-key
-persist-tun
-auth sha1
-cipher AES-256-CBC
-verb 5
-script-security 2
-up /etc/openvpn/server-up.sh
-down /etc/openvpn/server-down.sh
-plugin /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so login
+ansible==11.5.0
+ansible-core==2.18.5
+ansible-pylibssh==1.2.2
+cffi==1.17.1
+cryptography==44.0.2
+Jinja2==3.1.6
+librouteros==3.4.1
+MarkupSafe==3.0.2
+packaging==25.0
+pycparser==2.22
+PyYAML==6.0.2
+resolvelib==1.0.1
+toml==0.10.2
 ```
 
-Сервер:
-- Принимает VPN-подключения на TCP 20805.
+# Написание Ansible Playbook
 
-- Шифрует соединение через TLS + AES-256-CBC.
+inventory, хранящий хосты к которым будет подключаться Ansible:
 
-- Аутентифицирует клиентов через PAM.
+```yaml
+[mikrotik]
+10.244.103.2 mikrotik_user=admin mikrotik_pass=1 router_id=1.1.1.1 ansible_user=admin ansible_ssh_pass=1
+10.244.103.3 mikrotik_user=admin mikrotik_pass=1 router_id=1.1.1.2 ansible_user=admin ansible_ssh_pass=1
 
-- Выдаёт IP-адреса из сети 10.11.197.0/24.
+[mikrotik:vars]
+ansible_network_os=routeros
+ansible_connection=network_cli
+```
 
-# Настройка клиента в CHR и подключение к vpn
 
-В виртуальной машине virtualbox был запущен mikrotik CHR.
-Забираем с сервера сгенерированный сертификат и ключ для клиента, подключаемся к виртуальной машине через winbox.
 
-Копируем ключ и сертификат на роутер.
-
-![alt text](images/image.png)
-
-Устанавливаем сертификат (system - certificates)
-
-![alt text](images/image-1.png)
-
-Создаём ovpn соединение, указав параметры соединения, логин и пароль. 
-
-![alt text](images/image-2.png)
-
-# Проверка работоспособности
-
-Проверим status лог на сервере:
-
-![alt text](images/image-3.png)
-
-Видим, что клиент успешно подключился, получил айпи 10.11.197.2.
-
-Сделаем пинг клиента с сервера, и наоборот.
-
-![alt text](images/image-4.png)
-
-![alt text](images/image-5.png)
-
-Связь есть.
-
-Также на сервер был поставлен ansible и python
-
-![alt text](images/image-6.png)
