@@ -209,3 +209,8 @@ ospf_config:
 Конфигурация применилась на роутере:
 
 ![image](https://github.com/user-attachments/assets/c420eb06-7867-48f6-b900-59a1b4dd1706)
+
+Проверка связности:
+
+![image](https://github.com/user-attachments/assets/bb8ba35f-1b8f-4a78-9c28-c3ddbc53f679)
+
