@@ -48,7 +48,7 @@ toml==0.10.2
 
 inventory, хранящий хосты к которым будет подключаться Ansible:
 
-```yaml
+```ini
 [mikrotik]
 10.244.103.2 mikrotik_user=admin mikrotik_pass=1 router_id=1.1.1.1 ansible_user=admin ansible_ssh_pass=1
 10.244.103.3 mikrotik_user=admin mikrotik_pass=1 router_id=1.1.1.2 ansible_user=admin ansible_ssh_pass=1
