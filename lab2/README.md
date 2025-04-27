@@ -1,5 +1,3 @@
-![image](https://github.com/user-attachments/assets/d5598d00-0f61-4042-b07c-7498c1ce3a85)University: [ITMO University](https://itmo.ru/ru/)
-
 Faculty: [PIN](https://fict.itmo.ru)
 
 Course: [Network programming](https://itmo-ict-faculty.github.io/network-programming/)
