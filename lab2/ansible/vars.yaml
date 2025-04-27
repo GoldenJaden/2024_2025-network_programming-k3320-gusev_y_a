@@ -1,0 +1,22 @@
+user_config:
+  default_group: "read"
+  users:
+    - username: "other_user"
+      password: "2"
+
+ntp_config:
+  enabled: "true"
+  servers: "servers"
+  mode: "unicast"
+
+ospf_config:
+  instances:
+    - name: "ospf_1"
+      router_id: "4"
+  areas:
+    - name: "backbone"
+      area_id: 0.0.0.0
+      instance_name: ospf_1
+  interface_templates:
+    - networks: 0.0.0.0/0
+      area: backbone
