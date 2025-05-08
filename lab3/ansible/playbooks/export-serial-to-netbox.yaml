@@ -1,0 +1,34 @@
+---
+- name: Configure routers
+  hosts: mikrotik
+  gather_facts: no
+  module_defaults:
+    group/community.routeros.api:
+      hostname: "{{ ansible_host }}"
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_ssh_pass }}"
+    netbox_device:
+      netbox_url: "{{ netbox.api_address }}"
+      netbox_token: "{{ netbox.api_token }}"
+      validate_certs: false
+  vars_files:
+    - ../vars.yaml
+
+  tasks:
+    - name: Get serial number
+      community.routeros.command:
+        commands:
+          - /system license print
+      register: serial_number_info
+
+    - name: Print serial number
+      debug:
+        msg: "{{ serial_number_info.stdout_lines[0][0].split(' ')[1] }}"
+
+    - name: Update device serial number in NetBox
+      delegate_to: localhost
+      netbox.netbox.netbox_device:
+        data:
+          name: "{{ inventory_hostname }}"
+          serial: "{{ serial_number_info.stdout_lines[0][0].split(' ')[1]}}"
+        state: present

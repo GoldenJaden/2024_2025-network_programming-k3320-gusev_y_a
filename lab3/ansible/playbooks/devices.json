@@ -1,0 +1,212 @@
+[
+    {
+        "key": 1,
+        "value": {
+            "id": 1,
+            "url": "http://10.244.103.4:8000/api/dcim/devices/1/",
+            "display_url": "http://10.244.103.4:8000/dcim/devices/1/",
+            "display": "router-1",
+            "name": "router-1",
+            "device_type": {
+                "id": 1,
+                "url": "http://10.244.103.4:8000/api/dcim/device-types/1/",
+                "display": "CHR",
+                "manufacturer": {
+                    "id": 1,
+                    "url": "http://10.244.103.4:8000/api/dcim/manufacturers/1/",
+                    "display": "Mikrotik",
+                    "name": "Mikrotik",
+                    "slug": "mikrotik",
+                    "description": ""
+                },
+                "model": "CHR",
+                "slug": "chr",
+                "description": ""
+            },
+            "role": {
+                "id": 1,
+                "url": "http://10.244.103.4:8000/api/dcim/device-roles/1/",
+                "display": "Router",
+                "name": "Router",
+                "slug": "router",
+                "description": ""
+            },
+            "tenant": null,
+            "platform": null,
+            "serial": "",
+            "asset_tag": null,
+            "site": {
+                "id": 1,
+                "url": "http://10.244.103.4:8000/api/dcim/sites/1/",
+                "display": "Yaroslav Residence",
+                "name": "Yaroslav Residence",
+                "slug": "home",
+                "description": ""
+            },
+            "location": null,
+            "rack": null,
+            "position": null,
+            "face": null,
+            "latitude": null,
+            "longitude": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 1,
+                "url": "http://10.244.103.4:8000/api/ipam/ip-addresses/1/",
+                "display": "10.244.103.20/24",
+                "family": {
+                    "value": 4,
+                    "label": "IPv4"
+                },
+                "address": "10.244.103.20/24",
+                "description": ""
+            },
+            "primary_ip4": {
+                "id": 1,
+                "url": "http://10.244.103.4:8000/api/ipam/ip-addresses/1/",
+                "display": "10.244.103.20/24",
+                "family": {
+                    "value": 4,
+                    "label": "IPv4"
+                },
+                "address": "10.244.103.20/24",
+                "description": ""
+            },
+            "primary_ip6": null,
+            "oob_ip": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "description": "",
+            "comments": "",
+            "config_template": null,
+            "config_context": {},
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {},
+            "created": "2025-05-04T19:40:35.809822Z",
+            "last_updated": "2025-05-05T22:03:07.593165Z",
+            "console_port_count": 0,
+            "console_server_port_count": 0,
+            "power_port_count": 0,
+            "power_outlet_count": 0,
+            "interface_count": 1,
+            "front_port_count": 0,
+            "rear_port_count": 0,
+            "device_bay_count": 0,
+            "module_bay_count": 0,
+            "inventory_item_count": 0
+        }
+    },
+    {
+        "key": 2,
+        "value": {
+            "id": 2,
+            "url": "http://10.244.103.4:8000/api/dcim/devices/2/",
+            "display_url": "http://10.244.103.4:8000/dcim/devices/2/",
+            "display": "router-2",
+            "name": "router-2",
+            "device_type": {
+                "id": 1,
+                "url": "http://10.244.103.4:8000/api/dcim/device-types/1/",
+                "display": "CHR",
+                "manufacturer": {
+                    "id": 1,
+                    "url": "http://10.244.103.4:8000/api/dcim/manufacturers/1/",
+                    "display": "Mikrotik",
+                    "name": "Mikrotik",
+                    "slug": "mikrotik",
+                    "description": ""
+                },
+                "model": "CHR",
+                "slug": "chr",
+                "description": ""
+            },
+            "role": {
+                "id": 1,
+                "url": "http://10.244.103.4:8000/api/dcim/device-roles/1/",
+                "display": "Router",
+                "name": "Router",
+                "slug": "router",
+                "description": ""
+            },
+            "tenant": null,
+            "platform": null,
+            "serial": "",
+            "asset_tag": null,
+            "site": {
+                "id": 1,
+                "url": "http://10.244.103.4:8000/api/dcim/sites/1/",
+                "display": "Yaroslav Residence",
+                "name": "Yaroslav Residence",
+                "slug": "home",
+                "description": ""
+            },
+            "location": null,
+            "rack": null,
+            "position": null,
+            "face": null,
+            "latitude": null,
+            "longitude": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 3,
+                "url": "http://10.244.103.4:8000/api/ipam/ip-addresses/3/",
+                "display": "10.244.103.30/24",
+                "family": {
+                    "value": 4,
+                    "label": "IPv4"
+                },
+                "address": "10.244.103.30/24",
+                "description": ""
+            },
+            "primary_ip4": {
+                "id": 3,
+                "url": "http://10.244.103.4:8000/api/ipam/ip-addresses/3/",
+                "display": "10.244.103.30/24",
+                "family": {
+                    "value": 4,
+                    "label": "IPv4"
+                },
+                "address": "10.244.103.30/24",
+                "description": ""
+            },
+            "primary_ip6": null,
+            "oob_ip": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "description": "",
+            "comments": "",
+            "config_template": null,
+            "config_context": {},
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {},
+            "created": "2025-05-04T19:40:49.031275Z",
+            "last_updated": "2025-05-05T22:02:49.222434Z",
+            "console_port_count": 0,
+            "console_server_port_count": 0,
+            "power_port_count": 0,
+            "power_outlet_count": 0,
+            "interface_count": 1,
+            "front_port_count": 0,
+            "rear_port_count": 0,
+            "device_bay_count": 0,
+            "module_bay_count": 0,
+            "inventory_item_count": 0
+        }
+    }
+]

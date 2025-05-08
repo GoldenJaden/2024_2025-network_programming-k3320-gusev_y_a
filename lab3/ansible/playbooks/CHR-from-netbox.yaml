@@ -1,0 +1,55 @@
+---
+- name: Configure routers
+  hosts: mikrotik
+  gather_facts: no
+  module_defaults:
+    group/community.routeros.api:
+      hostname: "{{ ansible_host }}"
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_ssh_pass }}"
+  vars_files:
+    - ../vars.yaml
+
+  pre_tasks:
+    - name: Get NetBox devices on localhost
+      set_fact:
+        all_devices: >-
+          {{
+            query('netbox.netbox.nb_lookup',
+                  'devices',
+                  api_endpoint=netbox.api_address,
+                  token=netbox.api_token,
+                  validate_certs=false)
+          }}
+      delegate_to: localhost
+      run_once: true
+
+    - name: Select device for this host
+      set_fact:
+        device: >-
+          {{
+            all_devices
+            | selectattr('value.name', 'equalto', inventory_hostname)
+            | list
+            | first
+          }}
+      delegate_to: localhost
+
+    - debug:
+        msg:
+          - "router name: {{ device.value.name }}"
+          - "primary ipv4: {{ device.value.primary_ip.address }}"
+
+  tasks:
+    - name: Set system identity
+      community.routeros.api_modify:
+        path: "system identity"
+        data:
+          - name: "{{ device.value.name }}"
+
+    - name: Set IP Address
+      community.routeros.api_modify:
+        path: "ip address"
+        data:
+          - interface: "ovpn-out1"
+            address: "{{ device.value.primary_ip.address }}"

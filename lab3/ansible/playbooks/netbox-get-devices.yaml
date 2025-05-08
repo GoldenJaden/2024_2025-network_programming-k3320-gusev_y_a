@@ -1,0 +1,16 @@
+---
+- name: Get network devices from netbox
+  hosts: localhost
+  tasks:
+    - include_vars:
+        file: ../vars.yaml
+      no_log: true
+
+    - name: Get netbox devices data
+      set_fact:
+        devices: "{{ query('netbox.netbox.nb_lookup', 'devices', api_endpoint=netbox.api_address, token=netbox.api_token, validate_certs=false) }}"
+
+    - name: Save data to file
+      copy:
+        content: "{{ devices | to_json }}"
+        dest: devices.json
