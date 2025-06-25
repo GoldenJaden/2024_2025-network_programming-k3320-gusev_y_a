@@ -45,6 +45,7 @@ Date of finished: 25.06.2025
 
 
 Поднимаем узлы
+
 ![Screenshot_7](https://github.com/user-attachments/assets/57accb43-6f86-46a8-9127-f7522f8cbe1a)
 
 Проверяем связность, отправляя с ноды h1 на h2 сначала сообщение без туннеля, потом через туннель.
